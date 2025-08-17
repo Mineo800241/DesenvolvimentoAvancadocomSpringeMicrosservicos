@@ -1,0 +1,13 @@
+Estevao Santos; 05926325896; estevaosantos@gmail.com; 43996256389; true
+Jose Manoel; 04596325845; manoel@gmail.com; 45999632114; true
+Roberto Alves; 04295378925; roalves@gmail.com; 45966232523; false
+Ana Costa;123.456.789-00;ana.costa@example.com;(11) 91234-5678;true
+Bruno Almeida;987.654.321-11;bruno.almeida@example.com;(21) 99876-5432;false
+Carla Souza;111.222.333-44;carla.souza@example.com;(41) 99988-7766;true
+Diego Pereira;555.666.777-88;diego.pereira@example.com;(31) 95555-1234;true
+Evelyn Rocha;222.333.444-55;e.rocha@example.com;(61) 97654-3210;false
+Felipe Martins;333.444.555-66;felipe.martins@example.com;(51) 98888-4321;true
+Gabriela Lima;444.555.666‑77;gabriela.lima@example.com;(71) 99111‑5432;false
+Henrique Nascimento;555.666.777‑88;henrique.nascimento@example.com;(81) 97777‑6543;true
+Isabela Fernandes;666.777.888‑99;isabela.fernandes@example.com;(95) 96666‑7654;false
+João Silva;777.888.999‑00;joao.silva@example.com;(93) 95555‑8765;true
