@@ -1,16 +1,33 @@
 package br.edu.infnet.maxwellapi.model.domain;
 
-public class Arbitro {
+public class Arbitro extends Pessoa {
 
-    public String nome;
-    public String cpf;
-    public String email;
-    public String telefone;
-    public boolean contrato;
+    private boolean contrato;
+    private Endereco endereco;
+
+    @Override
+    public String obterPessoa() {
+        return "Arbitro";
+    }
 
     @Override
     public String toString() {
+        return String.format("Da classe arbitro tem %s e com o contrato %s, tem endereço: %s", super.toString() , contrato ? "ativo" : "inativo", endereco );
+    }
 
-        return String.format("O arbitro %s, cpf %s, com email %s, com telefone %s, esta com cadastro %s ", nome, cpf, email, telefone, contrato ? "ativo" : "inativo");
+    public boolean isContrato() {
+        return contrato;
+    }
+
+    public void setContrato(boolean contrato) {
+        this.contrato = contrato;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 }

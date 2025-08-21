@@ -7,7 +7,7 @@ public class Competidor {
     public String email;
     public String telefone;
     public String academia;
-    public int idade;
+    public double idade;
     public double peso;
     public String faixa;
     public boolean pagamento;
@@ -15,6 +15,6 @@ public class Competidor {
     @Override
     public String toString() {
 
-        return String.format("O competidor %s, cpf %s, com email %s, com telefone %s, academia %s, idade %d, peso %.2f, faixa %s, esta com pagamento %s ", nome, cpf, email, telefone, academia, idade, peso, faixa, pagamento ? "ok" : "falta");
+        return String.format("O competidor %s, cpf %s, com email %s, com telefone %s, academia %s, idade %.0f, peso %.2f, faixa %s, esta com pagamento %s ", nome, cpf, email, telefone, academia, idade, peso, faixa, pagamento ? "ok" : "falta");
     }
 }
