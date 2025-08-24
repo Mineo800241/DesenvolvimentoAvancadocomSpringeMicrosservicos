@@ -3,6 +3,7 @@ package br.edu.infnet.maxwellapi;
 
 import br.edu.infnet.maxwellapi.model.domain.Arbitro;
 import br.edu.infnet.maxwellapi.model.domain.Endereco;
+import br.edu.infnet.maxwellapi.service.ArbitroService;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
@@ -12,6 +13,12 @@ import java.io.FileReader;
 
 @Component
 public class ArbitroLoader implements ApplicationRunner {
+
+    private final ArbitroService arbitroService;
+
+    public ArbitroLoader(ArbitroService arbitroService) {
+        this.arbitroService = arbitroService;
+    }
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -39,9 +46,13 @@ public class ArbitroLoader implements ApplicationRunner {
 
             System.out.println(arbitro);
 
+            arbitroService.salvar(arbitro);
 
             linha = leitura.readLine();
         }
+
+        System.out.println(" - --- - " + arbitroService.obterLista().size());
+
             leitura.close();
 
     }

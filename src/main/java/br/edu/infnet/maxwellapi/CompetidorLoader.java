@@ -3,6 +3,7 @@ package br.edu.infnet.maxwellapi;
 
 import br.edu.infnet.maxwellapi.model.domain.Competidor;
 import br.edu.infnet.maxwellapi.model.domain.Endereco;
+import br.edu.infnet.maxwellapi.service.CompetidorService;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
@@ -12,6 +13,12 @@ import java.io.FileReader;
 
 @Component
 public class CompetidorLoader implements ApplicationRunner {
+
+    private final CompetidorService competidorService;
+
+    public CompetidorLoader(CompetidorService competidorService) {
+        this.competidorService = competidorService;
+    }
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -42,8 +49,12 @@ public class CompetidorLoader implements ApplicationRunner {
 
             System.out.println(competidor);
 
+            competidorService.salvar(competidor);
+
             linha = leitura.readLine();
         }
+
+        System.out.println(" - --- - " + competidorService.obterLista().size());
 
         leitura.close();
     }
