@@ -2,6 +2,7 @@ package br.edu.infnet.maxwellapi.model.domain;
 
 public class Arbitro extends Pessoa {
 
+    private Integer id;
     private boolean contrato;
     private Endereco endereco;
 
@@ -12,7 +13,15 @@ public class Arbitro extends Pessoa {
 
     @Override
     public String toString() {
-        return String.format("Da classe arbitro tem %s e com o contrato %s, tem endereço: %s", super.toString() , contrato ? "ativo" : "inativo", endereco );
+        return String.format("Numero %d - - Da classe arbitro tem %s e com o contrato %s, tem endereço: %s", id, super.toString(), contrato ? "ativo" : "inativo", endereco);
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public boolean isContrato() {
