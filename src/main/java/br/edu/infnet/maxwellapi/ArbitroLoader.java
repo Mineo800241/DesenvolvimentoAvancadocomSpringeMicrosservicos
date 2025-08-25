@@ -41,12 +41,12 @@ public class ArbitroLoader implements ApplicationRunner {
             arbitro.setEmail(campos[2]);
             arbitro.setTelefone(campos[3]);
             arbitro.setContrato(Boolean.valueOf(campos[4]));
-            arbitro.setEndereco(endereco);
+//            arbitro.setEndereco(endereco);
 
-
-            System.out.println(arbitro);
 
             arbitroService.salvar(arbitro);
+
+            System.out.println(arbitro);
 
             linha = leitura.readLine();
         }

@@ -45,11 +45,12 @@ public class CompetidorLoader implements ApplicationRunner {
             competidor.setPeso(Float.parseFloat(campos[6]));
             competidor.setFaixa(campos[7]);
             competidor.setPagamento(Boolean.parseBoolean(campos[8]));
-            competidor.setEndereco(endereco);
-
-            System.out.println(competidor);
+//            competidor.setEndereco(endereco);
+            competidor.setSexo(campos[9]);
 
             competidorService.salvar(competidor);
+
+            System.out.println(competidor);
 
             linha = leitura.readLine();
         }

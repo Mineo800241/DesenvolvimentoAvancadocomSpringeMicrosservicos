@@ -2,13 +2,14 @@ package br.edu.infnet.maxwellapi.model.domain;
 
 public abstract class Pessoa {
 
+
     private String nome;
     private String cpf;
     private String email;
 
     @Override
     public String toString() {
-        return String.format("Na classe Pessoa, temos o nome: %s, cpf: %s, email: %s", nome, cpf, email);
+        return String.format("nome: %s, cpf: %s, email: %s", nome, cpf, email);
     }
 
     public abstract String obterPessoa();

@@ -4,7 +4,7 @@ public class Arbitro extends Pessoa {
 
     private Integer id;
     private boolean contrato;
-    private Endereco endereco;
+//    private Endereco endereco;
 
     @Override
     public String obterPessoa() {
@@ -13,7 +13,7 @@ public class Arbitro extends Pessoa {
 
     @Override
     public String toString() {
-        return String.format("Numero %d - - Da classe arbitro tem %s e com o contrato %s, tem endereço: %s", id, super.toString(), contrato ? "ativo" : "inativo", endereco);
+        return String.format("ID %d, Arbitro, %s, contrato %s, endereço: ", id, super.toString(), contrato ? "ativo" : "inativo");
     }
 
     public Integer getId() {
@@ -32,11 +32,11 @@ public class Arbitro extends Pessoa {
         this.contrato = contrato;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
+//    public Endereco getEndereco() {
+//        return endereco;
+//    }
+//
+//    public void setEndereco(Endereco endereco) {
+//        this.endereco = endereco;
+//    }
 }

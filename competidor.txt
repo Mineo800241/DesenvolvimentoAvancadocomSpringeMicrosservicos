@@ -1,2 +1,22 @@
-Maxwell Simões Mineo; 04370389903; nacmineo@gmail.com; 429996935648; Armis; 33; 79.00; roxa; true;
-Lionel E Messi; 07850389903; messi@gmail.com; 429996915986; Maggo; 29; 84.00; azul; false;
+Maxwell Simões Mineo;04370389903;nacmineo@gmail.com;429996935648;Armis;33;79.00;Roxa;true;masculino
+Lionel Messi;07850389903;messi@gmail.com;429996915986;Maggo;29;84.00;Azul;false;masculino
+Miguel Silva;123.456.789‑01;miguel.silva@jiuacademy.com;(41) 91234‑0001;Gracie Power;25;80.2;Branca;true;masculino
+Gael Santos;234.567.890‑12;gael.santos@jiuacademy.com;(11) 98765‑1234;Elite Jiu‑Jitsu;22;75.0;Azul;false;masculino
+Ravi Oliveira;345.678.901‑23;ravi.oliveira@jiuacademy.com;(21) 99876‑2345;Fight Lab;29;78.5;Roxa;true;masculino
+Théo Costa;456.789.012‑34;theo.costa@jiuacademy.com;(31) 97654‑3456;Team Tori;24;72.0;Branca;true;masculino
+Arthur Souza;567.890.123‑45;arthur.souza@jiuacademy.com;(51) 98521‑4567;Open Mat;30;85.3;Azul;false;masculino
+Davi Pereira;678.901.234‑56;davi.pereira@jiuacademy.com;(61) 99111‑5678;Grapple School;26;88.7;Marrom;true;masculino
+Heitor Lima;789.012.345‑67;heitor.lima@jiuacademy.com;(71) 98888‑6789;Combat Train;28;90.1;Roxa;false;masculino
+Bernardo Costa;890.123.456‑78;bernardo.costa@jiuacademy.com;(81) 98000‑7890;Gracie Power;32;82.9;Azul;true;masculino
+Gabriel Santos;901.234.567‑89;gabriel.santos@jiuacademy.com;(91) 98777‑8901;Elite Jiu‑Jitsu;27;77.4;Branca;true;masculino
+Pedro Oliveira;012.345.678‑90;pedro.oliveira@jiuacademy.com;(85) 98011‑9012;Fight Lab;35;95.5;Marrom;false;masculino
+Helena Silva;123.456.789‑01;helena.silva@jiuacademy.com;(41) 91234‑0001;Gracie Power;23;62.5;Branca;true;feminino
+Valentina Santos;234.567.890‑12;valentina.santos@jiuacademy.com;(11) 98765‑1234;Elite Jiu‑Jitsu;28;65.2;Azul;false;feminino
+Isabella Oliveira;345.678.901‑23;isabella.oliveira@jiuacademy.com;(21) 99876‑2345;Fight Lab;31;70.8;Roxa;true;feminino
+Sophia Souza;456.789.012‑34;sophia.souza@jiuacademy.com;(31) 97654‑3456;Team Tori;26;58.4;Marrom;true;feminino
+Luna Pereira;567.890.123‑45;luna.pereira@jiuacademy.com;(51) 98521‑4567;Open Mat;24;55.6;Azul;false;feminino
+Maria Alice Silva;678.901.234‑56;mariaalice.silva@jiuacademy.com;(61) 99111‑5678;Grapple School;29;63.0;Branca;true;feminino
+Olívia Santos;789.012.345‑67;olivia.santos@jiuacademy.com;(71) 98888‑6789;Combat Train;27;60.3;Azul;true;feminino
+Cecília Oliveira;890.123.456‑78;cecilia.oliveira@jiuacademy.com;(81) 98000‑7890;Gracie Power;32;68.7;Roxa;false;feminino
+Laura Souza;901.234.567‑89;laura.souza@jiuacademy.com;(91) 98777‑8901;Elite Jiu‑Jitsu;34;66.9;Marrom;true;feminino
+Eva Pereira;012.345.678‑90;eva.pereira@jiuacademy.com;(85) 98011‑9012;Fight Lab;30;59.1;Azul;false;feminino

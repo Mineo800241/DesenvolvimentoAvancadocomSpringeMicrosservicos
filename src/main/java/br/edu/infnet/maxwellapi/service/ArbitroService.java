@@ -18,8 +18,11 @@ public class ArbitroService implements CrudService <Arbitro, Integer> {
 
     @Override
     public Arbitro salvar(Arbitro arbitro) {
+
         arbitro.setId(nextId.getAndIncrement());
+
         mapa.put(arbitro.getId(), arbitro);
+
         return arbitro;
     }
 
@@ -36,7 +39,19 @@ public class ArbitroService implements CrudService <Arbitro, Integer> {
         arbitro.setEmail("macs@gol.com");
         arbitro.setTelefone("43 991136662");
         arbitro.setContrato(Boolean.valueOf(true));
-        arbitro.setEndereco(endereco);
+//        arbitro.setEndereco(endereco);
+
+        return arbitro;
+    }
+
+    @Override
+    public Arbitro obterPorId(Integer id) {
+
+        Arbitro arbitro = mapa.get(id);
+
+        if (arbitro == null) {
+
+        }
 
         return arbitro;
     }

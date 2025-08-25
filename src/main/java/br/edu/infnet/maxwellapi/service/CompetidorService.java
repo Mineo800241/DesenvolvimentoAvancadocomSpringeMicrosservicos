@@ -1,8 +1,10 @@
 package br.edu.infnet.maxwellapi.service;
 
 
+import br.edu.infnet.maxwellapi.model.domain.Arbitro;
 import br.edu.infnet.maxwellapi.model.domain.Competidor;
 import br.edu.infnet.maxwellapi.model.domain.Endereco;
+import br.edu.infnet.maxwellapi.model.domain.exceptions.CompetidorInvalidoException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -20,6 +22,11 @@ public class CompetidorService implements CrudService <Competidor, Integer> {
 
     @Override
     public Competidor salvar(Competidor competidor) {
+
+        if(competidor.getNome() == null){
+            throw new CompetidorInvalidoException("Nome do competidor é obrigatorio!");
+        }
+
         competidor.setId(nextId.getAndIncrement());
         mapa.put(competidor.getId(), competidor);
         return competidor;
@@ -39,9 +46,34 @@ public class CompetidorService implements CrudService <Competidor, Integer> {
         competidor.setTelefone("43 991146663");
         competidor.setAcademia("Gracie Barra");
         competidor.setIdade(40);
+        competidor.setPeso(101.00);
         competidor.setFaixa("Preta");
         competidor.setPagamento(Boolean.valueOf(true));
-        competidor.setEndereco(endereco);
+//        competidor.setEndereco(endereco);
+        competidor.setId(1);
+        competidor.setSexo("Masculino");
+
+        return competidor;
+    }
+
+    public Competidor obterPorId(Integer id) {
+
+        Competidor competidor = mapa.get(id);
+
+        if (competidor == null) {
+            throw new IllegalArgumentException("Impossível obter o competidor pelo ID" + id);
+        }
+
+        return competidor;
+    }
+
+    public Competidor obterPorSexo(String sexo) {
+
+        Competidor competidor = mapa.get(sexo);
+
+        if (competidor == null) {
+            throw new IllegalArgumentException("Impossível obter o competidor sem sexo" + sexo);
+        }
 
         return competidor;
     }
