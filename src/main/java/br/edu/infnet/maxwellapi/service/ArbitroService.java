@@ -3,6 +3,8 @@ package br.edu.infnet.maxwellapi.service;
 import br.edu.infnet.maxwellapi.model.domain.Arbitro;
 import br.edu.infnet.maxwellapi.model.domain.Competidor;
 import br.edu.infnet.maxwellapi.model.domain.Endereco;
+import br.edu.infnet.maxwellapi.model.domain.exceptions.ArbitroInvalidoException;
+import br.edu.infnet.maxwellapi.model.domain.exceptions.ArbitroNaoEncontradoException;
 import br.edu.infnet.maxwellapi.model.domain.exceptions.CompetidorInvalidoException;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +26,7 @@ public class ArbitroService implements CrudService <Arbitro, Integer> {
             throw new IllegalArgumentException("Arbitro sem ID (invalido)");
         }
         if(arbitro.getNome() == null || arbitro.getNome().trim().isEmpty()){
-            throw new CompetidorInvalidoException("Nome do arbitro é obrigatorio!");
+            throw new ArbitroInvalidoException("Nome do arbitro é obrigatorio!");
         }
     }
 
@@ -94,6 +96,12 @@ public class ArbitroService implements CrudService <Arbitro, Integer> {
 
     @Override
     public void excluir(Integer id) {
+        if(id == null || id == 0){
+            throw new IllegalArgumentException("ID para exclusao nao pode ser nulo/zero");
+        }
+        if(!mapa.containsKey(id)){
+            throw new ArbitroNaoEncontradoException("Arbitro com ID " + id + " nao existe.");
+        }
         mapa.remove(id);
     }
 

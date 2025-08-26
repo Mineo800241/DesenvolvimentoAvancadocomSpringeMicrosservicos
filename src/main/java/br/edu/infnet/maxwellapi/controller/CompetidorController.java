@@ -27,6 +27,11 @@ public class CompetidorController {
         return competidorService.alterar(id, competidor);
     }
 
+    @DeleteMapping(value="/{id}")
+    public void excluir(@PathVariable Integer id) {
+        competidorService.excluir(id);
+    }
+
     @PatchMapping(value="/{id}/inativar")
     public Competidor inativar(@PathVariable Integer id){
         return competidorService.inativar(id);
@@ -43,6 +48,11 @@ public class CompetidorController {
 
         return competidorService.obterPorId(id);
     }
+
+//    @GetMapping("/feminino")
+//    public List<Competidor> obterListaFeminino(@PathVariable String genero) {
+//        return competidorService.obterLista();
+//    }
 
 //    @GetMapping("/{feminino}")
 //    public Competidor obterPorSexo(@PathVariable String sexo) {

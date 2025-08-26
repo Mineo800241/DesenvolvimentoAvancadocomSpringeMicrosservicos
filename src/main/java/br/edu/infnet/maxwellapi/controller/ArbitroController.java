@@ -40,9 +40,16 @@ public class ArbitroController {
         return arbitroService.alterar(id, arbitro);
     }
 
+    @DeleteMapping(value="/{id}")
+    public void excluir(@PathVariable Integer id) {
+        arbitroService.excluir(id);
+    }
+
     @PatchMapping(value="/{id}/inativar")
     public Arbitro inativar(@PathVariable Integer id){
         return arbitroService.inativar(id);
     }
+
+
 
 }

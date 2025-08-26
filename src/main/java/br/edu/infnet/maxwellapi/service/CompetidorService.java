@@ -2,7 +2,9 @@ package br.edu.infnet.maxwellapi.service;
 
 import br.edu.infnet.maxwellapi.model.domain.Competidor;
 import br.edu.infnet.maxwellapi.model.domain.Endereco;
+import br.edu.infnet.maxwellapi.model.domain.exceptions.ArbitroNaoEncontradoException;
 import br.edu.infnet.maxwellapi.model.domain.exceptions.CompetidorInvalidoException;
+import br.edu.infnet.maxwellapi.model.domain.exceptions.CompetidorNaoEncontradoException;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -121,7 +123,9 @@ public class CompetidorService implements CrudService <Competidor, Integer>{
         if(id == null || id == 0){
             throw new IllegalArgumentException("ID para excluir nao pode ser nulo/zero");
         }
-
+        if(!mapa.containsKey(id)){
+            throw new CompetidorNaoEncontradoException("Competidor com ID " + id + " nao existe.");
+        }
 
         mapa.remove(id);
     }

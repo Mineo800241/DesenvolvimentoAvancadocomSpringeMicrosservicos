@@ -1,0 +1,661 @@
+{
+	"info": {
+		"_postman_id": "41c9117a-19b7-45f6-8159-af07b5512b64",
+		"name": "api-maxwell",
+		"description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47865985",
+		"_collection_link": "https://maxwell-s-team.postman.co/workspace/maxwell's-Workspace~ddf6e6b5-1a7b-4576-8d9f-f3e276bd45a0/collection/47865985-41c9117a-19b7-45f6-8159-af07b5512b64?action=share&source=collection_link&creator=47865985"
+	},
+	"item": [
+		{
+			"name": "Competidores",
+			"item": [
+				{
+					"name": "Categorias",
+					"item": [
+						{
+							"name": "Feminino",
+							"item": [
+								{
+									"name": "Adulto",
+									"item": [
+										{
+											"name": "Peso Galo",
+											"item": []
+										},
+										{
+											"name": "Peso Pluma",
+											"item": []
+										},
+										{
+											"name": "Peso Pena",
+											"item": []
+										},
+										{
+											"name": "Peso Leve",
+											"item": []
+										},
+										{
+											"name": "Peso Medio",
+											"item": []
+										},
+										{
+											"name": "Peso Meio Medio",
+											"item": []
+										},
+										{
+											"name": "Peso Pesado",
+											"item": []
+										},
+										{
+											"name": "Peso Super Pesado",
+											"item": []
+										},
+										{
+											"name": "Peso Pesadissimo",
+											"item": []
+										},
+										{
+											"name": "Peso Absoluto",
+											"item": []
+										}
+									]
+								},
+								{
+									"name": "Master",
+									"item": [
+										{
+											"name": "Peso Galo",
+											"item": []
+										},
+										{
+											"name": "Peso Pluma",
+											"item": []
+										},
+										{
+											"name": "Peso Pena",
+											"item": []
+										},
+										{
+											"name": "Peso Leve",
+											"item": []
+										},
+										{
+											"name": "Peso Medio",
+											"item": []
+										},
+										{
+											"name": "Peso Meio Medio",
+											"item": []
+										},
+										{
+											"name": "Peso Pesado",
+											"item": []
+										},
+										{
+											"name": "Peso Super Pesado",
+											"item": []
+										},
+										{
+											"name": "Peso Pesadissimo",
+											"item": []
+										},
+										{
+											"name": "Peso Absoluto",
+											"item": []
+										}
+									]
+								},
+								{
+									"name": "Juvenil",
+									"item": [
+										{
+											"name": "Peso Galo",
+											"item": []
+										},
+										{
+											"name": "Peso Pluma",
+											"item": []
+										},
+										{
+											"name": "Peso Pena",
+											"item": []
+										},
+										{
+											"name": "Peso Leve",
+											"item": []
+										},
+										{
+											"name": "Peso Medio",
+											"item": []
+										},
+										{
+											"name": "Peso Meio Medio",
+											"item": []
+										},
+										{
+											"name": "Peso Pesado",
+											"item": []
+										},
+										{
+											"name": "Peso Super Pesado",
+											"item": []
+										},
+										{
+											"name": "Peso Pesadissimo",
+											"item": []
+										},
+										{
+											"name": "Peso Absoluto",
+											"item": []
+										}
+									]
+								},
+								{
+									"name": "Kids",
+									"item": [
+										{
+											"name": "Peso Galo",
+											"item": []
+										},
+										{
+											"name": "Peso Pluma",
+											"item": []
+										},
+										{
+											"name": "Peso Pena",
+											"item": []
+										},
+										{
+											"name": "Peso Leve",
+											"item": []
+										},
+										{
+											"name": "Peso Medio",
+											"item": []
+										},
+										{
+											"name": "Peso Meio Medio",
+											"item": []
+										},
+										{
+											"name": "Peso Pesado",
+											"item": []
+										},
+										{
+											"name": "Peso Super Pesado",
+											"item": []
+										},
+										{
+											"name": "Peso Pesadissimo",
+											"item": []
+										},
+										{
+											"name": "Peso Absoluto",
+											"item": []
+										}
+									]
+								},
+								{
+									"name": "obterListaFemininoGeral",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8080/api/competidores/feminino",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"competidores",
+												"feminino"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Masculino",
+							"item": [
+								{
+									"name": "Adulto",
+									"item": [
+										{
+											"name": "Peso Galo",
+											"item": []
+										},
+										{
+											"name": "Peso Pluma",
+											"item": []
+										},
+										{
+											"name": "Peso Pena",
+											"item": []
+										},
+										{
+											"name": "Peso Leve",
+											"item": []
+										},
+										{
+											"name": "Peso Medio",
+											"item": []
+										},
+										{
+											"name": "Peso Meio Medio",
+											"item": []
+										},
+										{
+											"name": "Peso Pesado",
+											"item": []
+										},
+										{
+											"name": "Peso Super Pesado",
+											"item": []
+										},
+										{
+											"name": "Peso Pesadissimo",
+											"item": []
+										},
+										{
+											"name": "Peso Absoluto",
+											"item": []
+										}
+									]
+								},
+								{
+									"name": "Master",
+									"item": [
+										{
+											"name": "Peso Galo",
+											"item": []
+										},
+										{
+											"name": "Peso Pluma",
+											"item": []
+										},
+										{
+											"name": "Peso Pena",
+											"item": []
+										},
+										{
+											"name": "Peso Leve",
+											"item": []
+										},
+										{
+											"name": "Peso Medio",
+											"item": []
+										},
+										{
+											"name": "Peso Meio Medio",
+											"item": []
+										},
+										{
+											"name": "Peso Pesado",
+											"item": []
+										},
+										{
+											"name": "Peso Super Pesado",
+											"item": []
+										},
+										{
+											"name": "Peso Pesadissimo",
+											"item": []
+										},
+										{
+											"name": "Peso Absoluto",
+											"item": []
+										}
+									]
+								},
+								{
+									"name": "Juvenil",
+									"item": [
+										{
+											"name": "Peso Galo",
+											"item": []
+										},
+										{
+											"name": "Peso Pluma",
+											"item": []
+										},
+										{
+											"name": "Peso Pena",
+											"item": []
+										},
+										{
+											"name": "Peso Leve",
+											"item": []
+										},
+										{
+											"name": "Peso Medio",
+											"item": []
+										},
+										{
+											"name": "Peso Meio Medio",
+											"item": []
+										},
+										{
+											"name": "Peso Pesado",
+											"item": []
+										},
+										{
+											"name": "Peso Super Pesado",
+											"item": []
+										},
+										{
+											"name": "Peso Pesadissimo",
+											"item": []
+										},
+										{
+											"name": "Peso Absoluto",
+											"item": []
+										}
+									]
+								},
+								{
+									"name": "Kids",
+									"item": [
+										{
+											"name": "Peso Galo",
+											"item": []
+										},
+										{
+											"name": "Peso Pluma",
+											"item": []
+										},
+										{
+											"name": "Peso Pena",
+											"item": []
+										},
+										{
+											"name": "Peso Leve",
+											"item": []
+										},
+										{
+											"name": "Peso Medio",
+											"item": []
+										},
+										{
+											"name": "Peso Meio Medio",
+											"item": []
+										},
+										{
+											"name": "Peso Pesado",
+											"item": []
+										},
+										{
+											"name": "Peso Super Pesado",
+											"item": []
+										},
+										{
+											"name": "Peso Pesadissimo",
+											"item": []
+										},
+										{
+											"name": "Peso Absoluto",
+											"item": []
+										}
+									]
+								},
+								{
+									"name": "obterListaMasculinoGeral",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8080/api/competidores/feminino",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"competidores",
+												"feminino"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "obterListaGeral",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/competidores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"competidores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obterPorIdGeral",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/competidores/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"competidores",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "alterarPorIdGeral",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"nome\": \"Teddy Mineo\",\n        \"cpf\": \"\",\n        \"email\": \"theddy.mineo@jiuacademy.com\",\n        \"telefone\": \"(43) 99113‑6662\",\n        \"academia\": \"Armis\",\n        \"idade\": 25,\n        \"peso\": 72,\n        \"faixa\": \"Branca\",\n        \"pagamento\": false,\n        \"genero\": \"masculino\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/competidores/23",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"competidores",
+								"23"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "incluirCompetidor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Teddy Mineo\",\n    \"cpf\": \"666.666.666‑23\",\n    \"email\": \"theddy.mineo@jiuacademy.com\",\n    \"telefone\": \"(66) 99666‑6666\",\n    \"academia\": \"Fight Lab\",\n    \"idade\": 29,\n    \"peso\": 78.5,\n    \"faixa\": \"Branca\",\n    \"pagamento\": true,\n    \"genero\": \"masculino\",\n    \"ehAtivo\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/competidores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"competidores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "inativarPorIdGeral",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Teddy Mineo\",\n    \"cpf\": \"666.666.666‑23\",\n    \"email\": \"theddy.mineo@jiuacademy.com\",\n    \"telefone\": \"(66) 99666‑6666\",\n    \"id\": 23,\n    \"academia\": \"Fight Lab\",\n    \"idade\": 29,\n    \"peso\": 78.5,\n    \"faixa\": \"Branca\",\n    \"pagamento\": true,\n    \"genero\": \"masculino\",\n    \"ehAtivo\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/competidores/23/inativar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"competidores",
+								"23",
+								"inativar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "excluirPorIdGeral",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/competidores/23",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"competidores",
+								"23"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Arbitros",
+			"item": [
+				{
+					"name": "obterLista",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/arbitros",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"arbitros"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obterPorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/arbitros/9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"arbitros",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "incluirArbitro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Marcos Wolgher\",\n    \"cpf\": \"999.777.888-66\",\n    \"email\": \"marcos.wolgher@example.com\",\n    \"telefone\": \"(45) 98899-4389\",\n    \"contrato\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/arbitros",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"arbitros"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
