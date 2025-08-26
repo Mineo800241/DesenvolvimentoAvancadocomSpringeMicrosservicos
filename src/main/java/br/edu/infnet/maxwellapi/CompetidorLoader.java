@@ -46,9 +46,9 @@ public class CompetidorLoader implements ApplicationRunner {
             competidor.setFaixa(campos[7]);
             competidor.setPagamento(Boolean.parseBoolean(campos[8]));
 //            competidor.setEndereco(endereco);
-            competidor.setSexo(campos[9]);
+            competidor.setGenero(campos[9]);
 
-            competidorService.salvar(competidor);
+            competidorService.incluir(competidor);
 
             System.out.println(competidor);
 

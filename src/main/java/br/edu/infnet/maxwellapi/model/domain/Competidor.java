@@ -9,7 +9,8 @@ public class Competidor extends Pessoa{
     private double peso;
     private String faixa;
     private boolean pagamento;
-    private String sexo;
+    private String genero;
+    private boolean EhAtivo;
 //    private Endereco endereco;
 
     @Override
@@ -20,7 +21,7 @@ public class Competidor extends Pessoa{
 
     @Override
     public String toString() {
-        return String.format("ID %d, Competidor, %s, academia: %s, idade: %.0f, peso: %.2f, faixa: %s, pagamento: %s,%s", id, super.toString(),academia, idade, peso, faixa, pagamento ? "ok" : "falta",sexo);
+        return String.format("ID %d, Competidor, %s, academia: %s, idade: %.0f, peso: %.2f, faixa: %s, pagamento?%s,%s,cadastro?%s", id, super.toString(),academia, idade, peso, faixa, pagamento? "ok" : "falta",genero,EhAtivo?"ativo":"inativo");
     }
 
     public Integer getId() {
@@ -79,11 +80,20 @@ public class Competidor extends Pessoa{
 //        this.endereco = endereco;
 //
 
-    public String getSexo() {
-        return sexo;
+
+    public String getGenero() {
+        return genero;
     }
 
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public boolean isEhAtivo() {
+        return EhAtivo;
+    }
+
+    public void setEhAtivo(boolean ehAtivo) {
+        EhAtivo = ehAtivo;
     }
 }

@@ -1,4 +1,4 @@
 package br.edu.infnet.maxwellapi.model.domain;
 
-public class Kids {
+public class Idade {
 }

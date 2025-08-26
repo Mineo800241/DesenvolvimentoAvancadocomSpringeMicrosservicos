@@ -1,36 +1,77 @@
 package br.edu.infnet.maxwellapi.service;
 
-
-import br.edu.infnet.maxwellapi.model.domain.Arbitro;
 import br.edu.infnet.maxwellapi.model.domain.Competidor;
 import br.edu.infnet.maxwellapi.model.domain.Endereco;
 import br.edu.infnet.maxwellapi.model.domain.exceptions.CompetidorInvalidoException;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Service
-public class CompetidorService implements CrudService <Competidor, Integer> {
+public class CompetidorService implements CrudService <Competidor, Integer>{
 
     private final Map<Integer, Competidor> mapa = new ConcurrentHashMap<Integer, Competidor>();
     private final AtomicInteger nextId = new AtomicInteger(1);
 
-    @Override
-    public Competidor salvar(Competidor competidor) {
-
-        if(competidor.getNome() == null){
+    private void validar(Competidor competidor){
+        if(competidor == null){
+            throw new IllegalArgumentException("Competidor sem ID (invalido)");
+        }
+        if(competidor.getNome() == null || competidor.getNome().trim().isEmpty()){
             throw new CompetidorInvalidoException("Nome do competidor é obrigatorio!");
         }
+    }
+
+    @Override
+    public Competidor incluir(Competidor competidor){
+
+        validar(competidor);
+
+        if(competidor.getId() != null && competidor.getId() != 0){
+            throw new IllegalArgumentException("NOVO Competidor NÃO PODE TER ID NA INCLUSAO");
+        }
+
+        //validação específica: um novo vendedor nao ter ID
+        //validação para o endereço: se ele foi fornecido
 
         competidor.setId(nextId.getAndIncrement());
+        // atribuição do novo ID
         mapa.put(competidor.getId(), competidor);
+        //persistência
         return competidor;
     }
+
+    @Override
+    public Competidor alterar(Integer id, Competidor competidor){
+
+        if(id == null || id == 0){
+            throw new IllegalArgumentException("ID para alteracao nao pode ser nulo/zero");
+        }
+
+
+        validar(competidor);
+
+        obterPorId(id);
+
+        competidor.setId(id);
+
+        //se o ID é valido
+
+        //validação para o vendedor: validar se o objeto está nulo e se o nome está prenchido
+
+        //vendedor existe?
+
+        mapa.put(competidor.getId(), competidor);
+
+        //persistência
+
+        return competidor;
+
+    }
+
+
 
     @Override
     public Competidor obter() {
@@ -51,11 +92,11 @@ public class CompetidorService implements CrudService <Competidor, Integer> {
         competidor.setPagamento(Boolean.valueOf(true));
 //        competidor.setEndereco(endereco);
         competidor.setId(1);
-        competidor.setSexo("Masculino");
+        competidor.setGenero("Masculino");
 
         return competidor;
     }
-
+    @Override
     public Competidor obterPorId(Integer id) {
 
         Competidor competidor = mapa.get(id);
@@ -67,20 +108,36 @@ public class CompetidorService implements CrudService <Competidor, Integer> {
         return competidor;
     }
 
-    public Competidor obterPorSexo(String sexo) {
 
-        Competidor competidor = mapa.get(sexo);
-
-        if (competidor == null) {
-            throw new IllegalArgumentException("Impossível obter o competidor sem sexo" + sexo);
-        }
-
-        return competidor;
-    }
+//    public Competidor obterListaPorSexo(String sexo) {
+//
+//        Competidor competidor = mapa.get(sexo);
+//
+//        return competidor;
+//    }
 
     @Override
     public void excluir(Integer id) {
+        if(id == null || id == 0){
+            throw new IllegalArgumentException("ID para excluir nao pode ser nulo/zero");
+        }
+
+
         mapa.remove(id);
+    }
+
+    public Competidor inativar(Integer id){
+        if(id == null || id == 0){
+            throw new IllegalArgumentException("ID para alteracao nao pode ser nulo/zero");
+        }
+        Competidor competidor = obterPorId(id);
+
+        if(!competidor.isEhAtivo()){
+            System.out.println("Competidor" + competidor.getNome() + "já está inativo");
+            return competidor;
+        }
+        competidor.setEhAtivo(false);
+        return null;
     }
 
     @Override
@@ -88,4 +145,22 @@ public class CompetidorService implements CrudService <Competidor, Integer> {
 
         return new ArrayList<Competidor>( mapa.values());
     }
-}
+
+    }
+
+//    public ArrayList<Competidor> feminino(String genero){
+//        if(genero == "feminino"){
+//            return new ArrayList<Competidor>(mapa.values());
+//        }
+//        return feminino(genero);
+//    }
+
+//    @Override
+//    public Competidor obterlistaSexo(Competidor competidor){
+//        if(Objects.equals(competidor.getSexo(), "feminino")){
+//
+//        }
+//        return competidor;
+//    }
+
+

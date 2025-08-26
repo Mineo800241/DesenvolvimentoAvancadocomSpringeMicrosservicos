@@ -2,11 +2,9 @@ package br.edu.infnet.maxwellapi.controller;
 
 import br.edu.infnet.maxwellapi.model.domain.Competidor;
 import br.edu.infnet.maxwellapi.service.CompetidorService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Iterator;
 import java.util.List;
 
 @RestController
@@ -17,6 +15,21 @@ public class CompetidorController {
 
     public CompetidorController(CompetidorService competidorService) {
         this.competidorService = competidorService;
+    }
+
+
+    @PostMapping
+    public Competidor incluir(@RequestBody Competidor competidor) {
+        return competidorService.incluir(competidor);
+    }
+    @PutMapping(value="/{id}")
+    public Competidor alterar(@PathVariable Integer id, @RequestBody Competidor competidor) {
+        return competidorService.alterar(id, competidor);
+    }
+
+    @PatchMapping(value="/{id}/inativar")
+    public Competidor inativar(@PathVariable Integer id){
+        return competidorService.inativar(id);
     }
 
     @GetMapping
@@ -31,11 +44,11 @@ public class CompetidorController {
         return competidorService.obterPorId(id);
     }
 
-    @RequestMapping("/api/competidores/feminino")
-    @GetMapping(value = "/{sexo}")
-    public Competidor obterPorSexo(@PathVariable String sexo) {
+//    @GetMapping("/{feminino}")
+//    public Competidor obterPorSexo(@PathVariable String sexo) {
+//
+//        return competidorService.obterPorId(sexo);
+//    }
 
-        return competidorService.obterPorSexo(sexo);
-    }
 }
 

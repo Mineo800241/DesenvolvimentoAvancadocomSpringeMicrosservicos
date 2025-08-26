@@ -44,7 +44,7 @@ public class ArbitroLoader implements ApplicationRunner {
 //            arbitro.setEndereco(endereco);
 
 
-            arbitroService.salvar(arbitro);
+            arbitroService.incluir(arbitro);
 
             System.out.println(arbitro);
 

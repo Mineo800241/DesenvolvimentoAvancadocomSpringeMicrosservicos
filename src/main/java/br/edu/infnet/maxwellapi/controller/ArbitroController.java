@@ -3,10 +3,8 @@ package br.edu.infnet.maxwellapi.controller;
 import br.edu.infnet.maxwellapi.model.domain.Arbitro;
 import br.edu.infnet.maxwellapi.model.domain.Competidor;
 import br.edu.infnet.maxwellapi.service.ArbitroService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import br.edu.infnet.maxwellapi.service.CompetidorService;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,9 +13,11 @@ import java.util.List;
 public class ArbitroController {
 
     private final ArbitroService arbitroService;
+    private final CompetidorService competidorService;
 
-    public ArbitroController(ArbitroService arbitroService) {
+    public ArbitroController(ArbitroService arbitroService, CompetidorService competidorService) {
         this.arbitroService = arbitroService;
+        this.competidorService = competidorService;
     }
 
     @GetMapping
@@ -29,4 +29,20 @@ public class ArbitroController {
     public Arbitro obterPorId(@PathVariable Integer id) {
         return arbitroService.obterPorId(id);
     }
+
+    @PostMapping
+    public Arbitro incluir(@RequestBody Arbitro arbitro) {
+        return arbitroService.incluir(arbitro);
+    }
+
+    @PutMapping(value="/{id}")
+    public Arbitro alterar(@PathVariable Integer id, @RequestBody Arbitro arbitro) {
+        return arbitroService.alterar(id, arbitro);
+    }
+
+    @PatchMapping(value="/{id}/inativar")
+    public Arbitro inativar(@PathVariable Integer id){
+        return arbitroService.inativar(id);
+    }
+
 }
