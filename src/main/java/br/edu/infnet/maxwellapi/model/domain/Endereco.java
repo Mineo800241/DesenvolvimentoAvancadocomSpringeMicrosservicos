@@ -1,30 +1,52 @@
 package br.edu.infnet.maxwellapi.model.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Endereco {
-    private String cep;
-    private String localidade;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    private String cidade;
+    private String estado;
 
     //To do: Construtor;
 
 
     @Override
     public String toString() {
-        return cep  + " ! " + localidade;
+        return "Endereco{" + "id=" + id + "cidade=" + cidade + ", estado=" + estado + '}';
     }
 
-    public String getCep() {
-        return cep;
+    public Integer getId() {
+        return id;
     }
 
-    public void setCep(String cep) {
-        this.cep = cep;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getLocalidade() {
-        return localidade;
+    public String getCidade() {
+        return cidade;
     }
 
-    public void setLocalidade(String localidade) {
-        this.localidade = localidade;
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }
+
+
+

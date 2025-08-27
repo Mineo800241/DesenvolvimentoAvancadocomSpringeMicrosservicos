@@ -1,15 +1,23 @@
 package br.edu.infnet.maxwellapi.model.domain;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public abstract class Pessoa {
-
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String nome;
     private String cpf;
     private String email;
+    private String telefone;
 
     @Override
     public String toString() {
-        return String.format("nome: %s, cpf: %s, email: %s", nome, cpf, email);
+        return String.format("ID: %s, nome: %s, cpf: %s, email: %s, telefone: %s",id, nome, cpf, email,telefone);
     }
 
     public abstract String obterPessoa();
@@ -38,6 +46,14 @@ public abstract class Pessoa {
         this.email = email;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public String getTelefone() {
         return telefone;
     }
@@ -45,7 +61,4 @@ public abstract class Pessoa {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
-
-    private String telefone;
-
 }

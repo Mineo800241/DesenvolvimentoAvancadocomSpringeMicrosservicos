@@ -1,17 +1,28 @@
 package br.edu.infnet.maxwellapi.model.domain;
 
-public class Competidor extends Pessoa{
+import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import org.springframework.validation.annotation.Validated;
+
+@Entity
+
+public class Competidor extends Pessoa {
 
 
-    private Integer id;
     private String academia;
-    private double idade;
+    private int idade;
     private double peso;
     private String faixa;
     private boolean pagamento;
     private String genero;
-    private boolean EhAtivo;
-//    private Endereco endereco;
+    private boolean ativo;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "endereco_id")
+    private Endereco endereco;
 
     @Override
     public String obterPessoa() {
@@ -21,15 +32,7 @@ public class Competidor extends Pessoa{
 
     @Override
     public String toString() {
-        return String.format("ID %d, Competidor, %s, academia: %s, idade: %.0f, peso: %.2f, faixa: %s, pagamento?%s,%s,cadastro?%s", id, super.toString(),academia, idade, peso, faixa, pagamento? "ok" : "falta",genero,EhAtivo?"ativo":"inativo");
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
+        return String.format("Competidor, %s, academia: %s, idade: %d, peso: %.2f, faixa: %s, pagamento? %s, genero: %s, cadastro? %s, endereco: %s", super.toString(), academia, idade, peso, faixa, pagamento ? "ok" : "falta", genero, ativo ? "ativo" : "inativo", endereco);
     }
 
     public String getAcademia() {
@@ -40,11 +43,11 @@ public class Competidor extends Pessoa{
         this.academia = academia;
     }
 
-    public double getIdade() {
+    public int getIdade() {
         return idade;
     }
 
-    public void setIdade(double idade) {
+    public void setIdade(int idade) {
         this.idade = idade;
     }
 
@@ -72,15 +75,6 @@ public class Competidor extends Pessoa{
         this.pagamento = pagamento;
     }
 
-//    public Endereco getEndereco() {
-//        return endereco;
-//    }
-//
-//    public void setEndereco(Endereco endereco) {
-//        this.endereco = endereco;
-//
-
-
     public String getGenero() {
         return genero;
     }
@@ -89,11 +83,21 @@ public class Competidor extends Pessoa{
         this.genero = genero;
     }
 
-    public boolean isEhAtivo() {
-        return EhAtivo;
+    public boolean isAtivo() {
+        return ativo;
     }
 
-    public void setEhAtivo(boolean ehAtivo) {
-        EhAtivo = ehAtivo;
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 }
+
+

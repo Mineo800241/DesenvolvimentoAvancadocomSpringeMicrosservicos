@@ -1,15 +1,18 @@
 package br.edu.infnet.maxwellapi;
 
 
+import br.edu.infnet.maxwellapi.model.domain.Arbitro;
 import br.edu.infnet.maxwellapi.model.domain.Competidor;
 import br.edu.infnet.maxwellapi.model.domain.Endereco;
 import br.edu.infnet.maxwellapi.service.CompetidorService;
+
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.util.List;
 
 @Component
 public class CompetidorLoader implements ApplicationRunner {
@@ -28,12 +31,15 @@ public class CompetidorLoader implements ApplicationRunner {
         String linha = leitura.readLine();
         String[] campos = null;
 
+
+        System.out.println("[CompetidorLoader] Iniciando carregamento de competidor do arquivo...");
+
         while(linha != null) {
             campos = linha.split(";");
 
             Endereco endereco = new Endereco();
-            endereco.setCep("86047490");
-            endereco.setLocalidade("Londrina");
+            endereco.setCidade("campos[11]");
+            endereco.setEstado("campos[12]");
 
             Competidor competidor = new Competidor();
             competidor.setNome(campos[0]);
@@ -41,12 +47,13 @@ public class CompetidorLoader implements ApplicationRunner {
             competidor.setEmail(campos[2]);
             competidor.setTelefone(campos[3]);
             competidor.setAcademia(campos[4]);
-            competidor.setIdade(Float.parseFloat(campos[5]));
-            competidor.setPeso(Float.parseFloat(campos[6]));
+            competidor.setIdade(Integer.parseInt(campos[5]));
+            competidor.setPeso(Double.parseDouble(campos[6]));
             competidor.setFaixa(campos[7]);
             competidor.setPagamento(Boolean.parseBoolean(campos[8]));
-//            competidor.setEndereco(endereco);
             competidor.setGenero(campos[9]);
+            competidor.setAtivo(Boolean.parseBoolean(campos[10]));
+            competidor.setEndereco(endereco);
 
             competidorService.incluir(competidor);
 
@@ -55,7 +62,17 @@ public class CompetidorLoader implements ApplicationRunner {
             linha = leitura.readLine();
         }
 
-        System.out.println(" - --- - " + competidorService.obterLista().size());
+        for(Competidor competidor : competidorService.obterLista()) {
+            System.out.println(competidor);
+        }
+
+        System.out.println("[Competidor Loader] Carregamento concluido com sucesso.");
+
+
+        List<Competidor> competidor =  competidorService.obterLista();
+        System.out.println("---- Competidores Carregados ----");
+        competidor.forEach(System.out::println);
+        System.out.println("---------------------------------");
 
         leitura.close();
     }

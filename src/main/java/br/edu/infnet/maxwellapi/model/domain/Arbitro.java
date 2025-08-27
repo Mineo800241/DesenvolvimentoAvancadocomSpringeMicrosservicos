@@ -1,10 +1,17 @@
 package br.edu.infnet.maxwellapi.model.domain;
 
+import jakarta.persistence.*;
+
+@Entity
+
 public class Arbitro extends Pessoa {
 
-    private Integer id;
     private boolean contrato;
-//    private Endereco endereco;
+
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "endereco_id")
+    private Endereco endereco;
 
     @Override
     public String obterPessoa() {
@@ -13,16 +20,9 @@ public class Arbitro extends Pessoa {
 
     @Override
     public String toString() {
-        return String.format("ID %d, Arbitro, %s, contrato %s, endereço: ", id, super.toString(), contrato ? "ativo" : "inativo");
+        return String.format("Arbitro, %s, contrato: %s, endereco: %s", super.toString(), contrato ? "ativo" : "inativo",endereco);
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public boolean isContrato() {
         return contrato;
@@ -32,11 +32,11 @@ public class Arbitro extends Pessoa {
         this.contrato = contrato;
     }
 
-//    public Endereco getEndereco() {
-//        return endereco;
-//    }
-//
-//    public void setEndereco(Endereco endereco) {
-//        this.endereco = endereco;
-//    }
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
 }
