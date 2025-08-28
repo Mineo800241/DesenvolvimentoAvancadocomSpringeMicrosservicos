@@ -1,6 +1,5 @@
 package br.edu.infnet.maxwellapi;
 
-
 import br.edu.infnet.maxwellapi.model.domain.Arbitro;
 import br.edu.infnet.maxwellapi.model.domain.Endereco;
 import br.edu.infnet.maxwellapi.service.ArbitroService;
@@ -48,22 +47,23 @@ public class ArbitroLoader implements ApplicationRunner {
             arbitro.setContrato(Boolean.valueOf(campos[4]));
             arbitro.setEndereco(endereco);
 
-
             arbitroService.incluir(arbitro);
-
-            System.out.println(arbitro);
 
             linha = leitura.readLine();
         }
 
-        for(Arbitro arbitro : arbitroService.obterLista()) {
-            System.out.println(arbitro);
-        }
+//        for(Arbitro arbitro : arbitroService.obterLista()) {
+//            System.out.println(arbitro);
+//        }
+
+        System.out.println("[Arbitro Loader] Carregamento concluido com sucesso.");
 
         List<Arbitro> arbitro =  arbitroService.obterLista();
         arbitro.forEach(System.out::println);
 
-        System.out.println(" - --- - " + arbitroService.obterLista().size());
+        System.out.println("---- Arbitro Carregados ----");
+        arbitro.forEach(System.out::println);
+        System.out.println("---------------------------------");
 
             leitura.close();
 

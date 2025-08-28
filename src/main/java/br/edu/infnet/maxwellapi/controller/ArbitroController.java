@@ -4,6 +4,8 @@ import br.edu.infnet.maxwellapi.model.domain.Arbitro;
 import br.edu.infnet.maxwellapi.model.domain.Competidor;
 import br.edu.infnet.maxwellapi.service.ArbitroService;
 import br.edu.infnet.maxwellapi.service.CompetidorService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,26 +15,17 @@ import java.util.List;
 public class ArbitroController {
 
     private final ArbitroService arbitroService;
-    private final CompetidorService competidorService;
 
-    public ArbitroController(ArbitroService arbitroService, CompetidorService competidorService) {
+    public ArbitroController(ArbitroService arbitroService) {
         this.arbitroService = arbitroService;
-        this.competidorService = competidorService;
-    }
-
-    @GetMapping
-    public List<Arbitro> obterLista() {
-        return arbitroService.obterLista();
-    }
-
-    @GetMapping(value = "/{id}")
-    public Arbitro obterPorId(@PathVariable Integer id) {
-        return arbitroService.obterPorId(id);
     }
 
     @PostMapping
-    public Arbitro incluir(@RequestBody Arbitro arbitro) {
-        return arbitroService.incluir(arbitro);
+    public ResponseEntity<Arbitro> incluir(@RequestBody Arbitro arbitro) {
+
+        Arbitro novoarbitro = arbitroService.incluir(arbitro);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(novoarbitro);
     }
 
     @PutMapping(value="/{id}")
@@ -41,8 +34,9 @@ public class ArbitroController {
     }
 
     @DeleteMapping(value="/{id}")
-    public void excluir(@PathVariable Integer id) {
+    public ResponseEntity<Void> excluir(@PathVariable Integer id) {
         arbitroService.excluir(id);
+        return ResponseEntity.noContent().build();
     }
 
     @PatchMapping(value="/{id}/inativar")
@@ -50,6 +44,22 @@ public class ArbitroController {
         return arbitroService.inativar(id);
     }
 
+    @GetMapping
+    public ResponseEntity<List<Arbitro>> obterLista() {
 
+        List<Arbitro> lista = arbitroService.obterLista();
+
+        if (lista.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.status(HttpStatus.OK).body(lista);
+    }
+
+    @GetMapping(value = "/{id}")
+    public Arbitro obterPorId(@PathVariable Integer id) {
+
+        return arbitroService.obterPorId(id);
+    }
 
 }

@@ -26,6 +26,7 @@ public class CompetidorController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(novocompetidor);
     }
+
     @PutMapping(value="/{id}")
     public Competidor alterar(@PathVariable Integer id, @RequestBody Competidor competidor) {
         return competidorService.alterar(id, competidor);
@@ -55,8 +56,6 @@ public class CompetidorController {
         return ResponseEntity.status(HttpStatus.OK).body(lista);
     }
 
-
-    // Usar essa ideia para separar por categoria de faixas, por idade e por peso.
     @GetMapping(value = "/{id}")
     public Competidor obterPorId(@PathVariable Integer id) {
 

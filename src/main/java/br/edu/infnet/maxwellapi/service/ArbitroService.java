@@ -1,21 +1,18 @@
 package br.edu.infnet.maxwellapi.service;
 
 import br.edu.infnet.maxwellapi.model.domain.Arbitro;
-import br.edu.infnet.maxwellapi.model.domain.Endereco;
 
 import br.edu.infnet.maxwellapi.model.domain.exceptions.ArbitroInvalidoException;
 import br.edu.infnet.maxwellapi.model.domain.exceptions.ArbitroNaoEncontradoException;
-import br.edu.infnet.maxwellapi.model.domain.exceptions.CompetidorInvalidoException;
 
 import br.edu.infnet.maxwellapi.model.repository.ArbitroRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
+
 
 @Service
 public class ArbitroService implements CrudService <Arbitro, Integer> {
@@ -70,24 +67,19 @@ public class ArbitroService implements CrudService <Arbitro, Integer> {
     @Override
     public Arbitro obterPorId(Integer id) {
 
-        Arbitro arbitro = mapa.get(id);
-
-        if (arbitro == null) {
-            throw new IllegalArgumentException("Impossível obter o árbitro pelo ID" + id);
+        if(id == null || id <= 0){
+            throw new IllegalArgumentException("ID para alteracao nao pode ser nulo/zero");
         }
 
-        return arbitro;
+        return arbitroRepository.findById(id).orElseThrow(()-> new ArbitroNaoEncontradoException("Arbitro com ID " + id + " nao existe."));
     }
 
     @Override
     public void excluir(Integer id) {
-        if(id == null || id == 0){
-            throw new IllegalArgumentException("ID para exclusao nao pode ser nulo/zero");
-        }
-        if(!mapa.containsKey(id)){
-            throw new ArbitroNaoEncontradoException("Arbitro com ID " + id + " nao existe.");
-        }
-        mapa.remove(id);
+
+        obterPorId(id);
+
+        arbitroRepository.delete(obterPorId(id));
     }
 
     public Arbitro inativar(Integer id){

@@ -1,7 +1,5 @@
 package br.edu.infnet.maxwellapi;
 
-
-import br.edu.infnet.maxwellapi.model.domain.Arbitro;
 import br.edu.infnet.maxwellapi.model.domain.Competidor;
 import br.edu.infnet.maxwellapi.model.domain.Endereco;
 import br.edu.infnet.maxwellapi.service.CompetidorService;
@@ -56,8 +54,6 @@ public class CompetidorLoader implements ApplicationRunner {
             competidor.setEndereco(endereco);
 
             competidorService.incluir(competidor);
-
-//            System.out.println(competidor);
 
             linha = leitura.readLine();
         }

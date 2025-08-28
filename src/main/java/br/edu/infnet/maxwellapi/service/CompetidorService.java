@@ -1,18 +1,15 @@
 package br.edu.infnet.maxwellapi.service;
 
 import br.edu.infnet.maxwellapi.model.domain.Competidor;
-import br.edu.infnet.maxwellapi.model.domain.Endereco;
 
-import br.edu.infnet.maxwellapi.model.domain.exceptions.ArbitroNaoEncontradoException;
 import br.edu.infnet.maxwellapi.model.domain.exceptions.CompetidorInvalidoException;
 import br.edu.infnet.maxwellapi.model.domain.exceptions.CompetidorNaoEncontradoException;
 
 import br.edu.infnet.maxwellapi.model.repository.CompetidorRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.List;
 import java.util.Map;
 
