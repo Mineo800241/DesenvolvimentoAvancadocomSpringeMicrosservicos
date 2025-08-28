@@ -47,29 +47,32 @@ public class CompetidorLoader implements ApplicationRunner {
             competidor.setEmail(campos[2]);
             competidor.setTelefone(campos[3]);
             competidor.setAcademia(campos[4]);
-            competidor.setIdade(Integer.parseInt(campos[5]));
-            competidor.setPeso(Double.parseDouble(campos[6]));
+            competidor.setIdade(Integer.valueOf(campos[5]));
+            competidor.setPeso(Double.valueOf(campos[6]));
             competidor.setFaixa(campos[7]);
-            competidor.setPagamento(Boolean.parseBoolean(campos[8]));
+            competidor.setPagamento(Boolean.valueOf(campos[8]));
             competidor.setGenero(campos[9]);
-            competidor.setAtivo(Boolean.parseBoolean(campos[10]));
+            competidor.setAtivo(Boolean.valueOf(campos[10]));
             competidor.setEndereco(endereco);
 
             competidorService.incluir(competidor);
 
-            System.out.println(competidor);
+//            System.out.println(competidor);
 
             linha = leitura.readLine();
         }
 
-        for(Competidor competidor : competidorService.obterLista()) {
-            System.out.println(competidor);
-        }
+//        for(Competidor competidor : competidorService.obterLista()) {
+//            System.out.println(competidor);
+//        }
 
         System.out.println("[Competidor Loader] Carregamento concluido com sucesso.");
 
 
         List<Competidor> competidor =  competidorService.obterLista();
+        competidor.forEach(System.out::println);
+
+
         System.out.println("---- Competidores Carregados ----");
         competidor.forEach(System.out::println);
         System.out.println("---------------------------------");

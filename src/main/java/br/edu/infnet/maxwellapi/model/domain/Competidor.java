@@ -8,7 +8,7 @@ import jakarta.persistence.ManyToOne;
 import org.springframework.validation.annotation.Validated;
 
 @Entity
-
+@Table
 public class Competidor extends Pessoa {
 
 
@@ -20,7 +20,7 @@ public class Competidor extends Pessoa {
     private String genero;
     private boolean ativo;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "endereco_id")
     private Endereco endereco;
 

@@ -1,5 +1,4 @@
 package br.edu.infnet.maxwellapi.model.domain;
-
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;

@@ -27,8 +27,7 @@ public class CompetidorService implements CrudService <Competidor, Integer>{
         this.competidorRepository = competidorRepository;
     }
 
-
-    private final Map<Integer, Competidor> mapa = new ConcurrentHashMap<Integer, Competidor>();
+    private final Map<Integer, Competidor> mapa = new ConcurrentHashMap<Integer,Competidor>();
 
     private void validar(Competidor competidor){
         if(competidor == null){
@@ -74,25 +73,19 @@ public class CompetidorService implements CrudService <Competidor, Integer>{
     @Override
     public Competidor obterPorId(Integer id) {
 
-        Competidor competidor = mapa.get(id);
-
-        if (id == null || id <= 0 ) {
-            throw new IllegalArgumentException("Impossível obter o competidor pelo ID" + id);
+        if(id == null || id <= 0){
+            throw new IllegalArgumentException("ID para alteracao nao pode ser nulo/zero");
         }
 
-        return competidor;
+        return competidorRepository.findById(id).orElseThrow(() -> new CompetidorNaoEncontradoException("Competidor com ID " + id + " nao existe."));
     }
 
     @Override
     public void excluir(Integer id) {
-        if(id == null || id == 0){
-            throw new IllegalArgumentException("ID para excluir nao pode ser nulo/zero");
-        }
 
-        if(!mapa.containsKey(id)){
-            throw new CompetidorNaoEncontradoException("Competidor com ID " + id + " nao existe.");
-        }
-        mapa.remove(id);
+        obterPorId(id);
+
+        competidorRepository.deleteById(id);
     }
 
     public Competidor inativar(Integer id){

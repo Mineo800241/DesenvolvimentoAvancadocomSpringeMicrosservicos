@@ -2,6 +2,8 @@ package br.edu.infnet.maxwellapi.controller;
 
 import br.edu.infnet.maxwellapi.model.domain.Competidor;
 import br.edu.infnet.maxwellapi.service.CompetidorService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Iterator;
@@ -17,10 +19,12 @@ public class CompetidorController {
         this.competidorService = competidorService;
     }
 
-
     @PostMapping
-    public Competidor incluir(@RequestBody Competidor competidor) {
-        return competidorService.incluir(competidor);
+    public ResponseEntity <Competidor> incluir(@RequestBody Competidor competidor) {
+
+        Competidor novocompetidor = competidorService.incluir(competidor);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(novocompetidor);
     }
     @PutMapping(value="/{id}")
     public Competidor alterar(@PathVariable Integer id, @RequestBody Competidor competidor) {
@@ -28,8 +32,10 @@ public class CompetidorController {
     }
 
     @DeleteMapping(value="/{id}")
-    public void excluir(@PathVariable Integer id) {
+    public  ResponseEntity<Void> excluir(@PathVariable Integer id) {
         competidorService.excluir(id);
+        return ResponseEntity.noContent().build();
+
     }
 
     @PatchMapping(value="/{id}/inativar")
@@ -38,9 +44,17 @@ public class CompetidorController {
     }
 
     @GetMapping
-    public List<Competidor> obterLista() {
-        return competidorService.obterLista();
+    public ResponseEntity<List<Competidor>> obterLista() {
+
+        List<Competidor> lista = competidorService.obterLista();
+
+        if (lista.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.status(HttpStatus.OK).body(lista);
     }
+
 
     // Usar essa ideia para separar por categoria de faixas, por idade e por peso.
     @GetMapping(value = "/{id}")
@@ -48,17 +62,6 @@ public class CompetidorController {
 
         return competidorService.obterPorId(id);
     }
-
-//    @GetMapping("/feminino")
-//    public List<Competidor> obterListaFeminino(@PathVariable String genero) {
-//        return competidorService.obterLista();
-//    }
-
-//    @GetMapping("/{feminino}")
-//    public Competidor obterPorSexo(@PathVariable String sexo) {
-//
-//        return competidorService.obterPorId(sexo);
-//    }
 
 }
 
