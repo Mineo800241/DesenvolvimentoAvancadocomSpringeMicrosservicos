@@ -2,6 +2,8 @@ package br.edu.infnet.maxwellapi.controller;
 
 import br.edu.infnet.maxwellapi.model.domain.Arbitro;
 import br.edu.infnet.maxwellapi.model.domain.Competidor;
+import br.edu.infnet.maxwellapi.model.domain.exceptions.ArbitroInvalidoException;
+import br.edu.infnet.maxwellapi.model.domain.exceptions.CompetidorInvalidoException;
 import br.edu.infnet.maxwellapi.service.ArbitroService;
 import br.edu.infnet.maxwellapi.service.CompetidorService;
 import org.springframework.http.HttpStatus;
@@ -23,14 +25,22 @@ public class ArbitroController {
     @PostMapping
     public ResponseEntity<Arbitro> incluir(@RequestBody Arbitro arbitro) {
 
-        Arbitro novoarbitro = arbitroService.incluir(arbitro);
+        try{
+            Arbitro novoarbitro = arbitroService.incluir(arbitro);
+            return ResponseEntity.status(HttpStatus.CREATED).body(novoarbitro);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(novoarbitro);
+        }   catch (ArbitroInvalidoException e) {
+            return ResponseEntity.badRequest().build();
+
+        }   catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
     @PutMapping(value="/{id}")
-    public Arbitro alterar(@PathVariable Integer id, @RequestBody Arbitro arbitro) {
-        return arbitroService.alterar(id, arbitro);
+    public ResponseEntity<Arbitro> alterar(@PathVariable Integer id, @RequestBody Arbitro arbitro) {
+        Arbitro arbitroalterado = arbitroService.alterar(id, arbitro);
+        return ResponseEntity.ok(arbitroalterado);
     }
 
     @DeleteMapping(value="/{id}")
@@ -40,8 +50,9 @@ public class ArbitroController {
     }
 
     @PatchMapping(value="/{id}/inativar")
-    public Arbitro inativar(@PathVariable Integer id){
-        return arbitroService.inativar(id);
+    public ResponseEntity<Arbitro> inativar(@PathVariable Integer id){
+        Arbitro arbitro = arbitroService.inativar(id);
+        return ResponseEntity.ok(arbitro);
     }
 
     @GetMapping
@@ -53,13 +64,13 @@ public class ArbitroController {
             return ResponseEntity.noContent().build();
         }
 
-        return ResponseEntity.status(HttpStatus.OK).body(lista);
+        return ResponseEntity.ok(lista);
     }
 
     @GetMapping(value = "/{id}")
-    public Arbitro obterPorId(@PathVariable Integer id) {
-
-        return arbitroService.obterPorId(id);
-    }
+    public ResponseEntity <Arbitro> obterPorId(@PathVariable Integer id) {
+            Arbitro arbitro = arbitroService.obterPorId(id);
+            return ResponseEntity.ok(arbitro);
+        }
 
 }

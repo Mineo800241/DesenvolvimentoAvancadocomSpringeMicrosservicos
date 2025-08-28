@@ -18,7 +18,11 @@ public class Endereco {
 
     @Override
     public String toString() {
-        return "Endereco{" + "id=" + id + "cidade=" + cidade + ", estado=" + estado + '}';
+        return "Endereco{" +
+                "id=" + id +
+                ", cidade='" + cidade + '\'' +
+                ", estado='" + estado + '\'' +
+                '}';
     }
 
     public Integer getId() {

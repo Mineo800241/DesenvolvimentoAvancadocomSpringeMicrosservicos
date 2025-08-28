@@ -23,8 +23,6 @@ public class ArbitroService implements CrudService <Arbitro, Integer> {
         this.arbitroRepository = arbitroRepository;
     }
 
-    private final Map<Integer, Arbitro> mapa = new ConcurrentHashMap<Integer, Arbitro>();
-
     private void validar(Arbitro arbitro){
         if(arbitro == null){
             throw new IllegalArgumentException("Arbitro sem ID (invalido)");
@@ -59,9 +57,7 @@ public class ArbitroService implements CrudService <Arbitro, Integer> {
 
         arbitro.setId(id);
 
-        mapa.put(arbitro.getId(), arbitro);
-
-        return arbitro;
+        return arbitroRepository.save(arbitro);
     }
 
     @Override
