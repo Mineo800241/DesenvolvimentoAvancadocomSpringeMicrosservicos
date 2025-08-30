@@ -26,10 +26,13 @@ public class Competidor extends Pessoa {
     @Min(value = 0)
     private double peso;
 
+    @NotBlank
     private String faixa;
+
 
     private boolean pagamento;
 
+    @NotBlank
     private String genero;
 
     private boolean ativo;
