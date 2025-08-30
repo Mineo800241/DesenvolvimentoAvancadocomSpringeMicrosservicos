@@ -39,8 +39,8 @@ public class CompetidorLoader implements ApplicationRunner {
             campos = linha.split(";");
 
             Endereco endereco = new Endereco();
-            endereco.setCidade("campos[11]");
-            endereco.setEstado("campos[12]");
+            endereco.setCidade(campos[11]);
+            endereco.setEstado(campos[12]);
 
             Competidor competidor = new Competidor();
             competidor.setNome(campos[0]);

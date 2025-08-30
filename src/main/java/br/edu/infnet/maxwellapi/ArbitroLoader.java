@@ -38,8 +38,8 @@ public class ArbitroLoader implements ApplicationRunner {
             campos = linha.split(";");
 
             Endereco endereco = new Endereco();
-            endereco.setCidade("campos[11]");
-            endereco.setEstado("campos[12]");
+            endereco.setCidade(campos[5]);
+            endereco.setEstado(campos[6]);
 
             Arbitro arbitro = new Arbitro();
             arbitro.setNome(campos[0]);
