@@ -1,7 +1,6 @@
 package br.edu.infnet.maxwellapi.controller;
 
 import br.edu.infnet.maxwellapi.model.domain.Competidor;
-import br.edu.infnet.maxwellapi.model.domain.exceptions.CompetidorInvalidoException;
 import br.edu.infnet.maxwellapi.service.CompetidorService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,22 +22,14 @@ public class CompetidorController {
     @PostMapping
     public ResponseEntity <Competidor> incluir(@RequestBody Competidor competidor) {
 
-        try{
-            Competidor novocompetidor = competidorService.incluir(competidor);
-            return ResponseEntity.status(HttpStatus.CREATED).body(novocompetidor);
+        Competidor novocompetidor = competidorService.incluir(competidor);
 
-        }   catch (CompetidorInvalidoException e) {
-            return ResponseEntity.badRequest().build();
-
-        }   catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+        return ResponseEntity.status(HttpStatus.CREATED).body(novocompetidor);
     }
 
     @PutMapping(value="/{id}")
-    public ResponseEntity<Competidor> alterar(@PathVariable Integer id, @RequestBody Competidor competidor) {
-        Competidor competidoralterado = competidorService.alterar(id, competidor);
-        return ResponseEntity.ok(competidoralterado);
+    public Competidor alterar(@PathVariable Integer id, @RequestBody Competidor competidor) {
+        return competidorService.alterar(id, competidor);
     }
 
     @DeleteMapping(value="/{id}")
@@ -49,9 +40,8 @@ public class CompetidorController {
     }
 
     @PatchMapping(value="/{id}/inativar")
-    public ResponseEntity<Competidor> inativar(@PathVariable Integer id){
-        Competidor competidor = competidorService.inativar(id);
-        return ResponseEntity.ok(competidor);
+    public Competidor inativar(@PathVariable Integer id){
+        return competidorService.inativar(id);
     }
 
     @GetMapping
@@ -63,13 +53,13 @@ public class CompetidorController {
             return ResponseEntity.noContent().build();
         }
 
-        return ResponseEntity.ok(lista);
+        return ResponseEntity.status(HttpStatus.OK).body(lista);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity <Competidor> obterPorId(@PathVariable Integer id) {
-        Competidor competidor = competidorService.obterPorId(id);
-        return ResponseEntity.ok(competidor);
+    public Competidor obterPorId(@PathVariable Integer id) {
+
+        return competidorService.obterPorId(id);
     }
 
 }

@@ -1,6 +1,8 @@
 package br.edu.infnet.maxwellapi.model.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table
@@ -10,7 +12,10 @@ public class Endereco {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NotBlank
     private String cidade;
+
+    @NotBlank
     private String estado;
 
     //To do: Construtor;

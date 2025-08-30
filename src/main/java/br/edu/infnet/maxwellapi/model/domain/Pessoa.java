@@ -3,15 +3,30 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
 @MappedSuperclass
 public abstract class Pessoa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @NotBlank(message = "Nome é obrigatório")
+    @Size(min = 3, max = 50, message = "O NOME TEM QUE TER DE 3 A 50 CARACTERES!")
     private String nome;
+
+    //@NotBlank
+    //@Pattern(regexp = "^\\d{3}\\.\\d{3}\\.\\d{3} -\\d{2}$")
     private String cpf;
+
+    @NotBlank(message = "email é obrigatório")
+//    @Email(message = "email invalido")
     private String email;
+
+    @NotBlank(message = "telefone é obrigatório")
     private String telefone;
 
     @Override

@@ -5,6 +5,10 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.validation.annotation.Validated;
 
 @Entity
@@ -13,15 +17,26 @@ public class Competidor extends Pessoa {
 
 
     private String academia;
+
+    @NotNull
+    @Min(value = 0)
     private int idade;
+
+    @NotNull
+    @Min(value = 0)
     private double peso;
+
     private String faixa;
+
     private boolean pagamento;
+
     private String genero;
+
     private boolean ativo;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "endereco_id")
+    @Valid
     private Endereco endereco;
 
     @Override
