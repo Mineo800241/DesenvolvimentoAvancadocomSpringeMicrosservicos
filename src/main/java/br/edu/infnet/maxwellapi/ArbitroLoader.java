@@ -2,6 +2,8 @@ package br.edu.infnet.maxwellapi;
 
 import br.edu.infnet.maxwellapi.model.domain.Arbitro;
 import br.edu.infnet.maxwellapi.model.domain.Endereco;
+import br.edu.infnet.maxwellapi.model.domain.exceptions.ArbitroInvalidoException;
+import br.edu.infnet.maxwellapi.model.domain.exceptions.CompetidorInvalidoException;
 import br.edu.infnet.maxwellapi.service.ArbitroService;
 
 import org.springframework.boot.ApplicationArguments;
@@ -36,8 +38,8 @@ public class ArbitroLoader implements ApplicationRunner {
             campos = linha.split(";");
 
             Endereco endereco = new Endereco();
-            endereco.setCidade(campos[5]);
-            endereco.setEstado(campos[6]);
+            endereco.setCidade("campos[11]");
+            endereco.setEstado("campos[12]");
 
             Arbitro arbitro = new Arbitro();
             arbitro.setNome(campos[0]);
@@ -45,9 +47,18 @@ public class ArbitroLoader implements ApplicationRunner {
             arbitro.setEmail(campos[2]);
             arbitro.setTelefone(campos[3]);
             arbitro.setContrato(Boolean.valueOf(campos[4]));
+
             arbitro.setEndereco(endereco);
 
-            arbitroService.incluir(arbitro);
+//            arbitroService.incluir(arbitro);
+
+            try {
+                arbitroService.incluir(arbitro);
+            } catch (ArbitroInvalidoException e) {
+                System.err.println("Problema na inclusao do arbitro: " + e.getMessage());
+            }
+
+
 
             linha = leitura.readLine();
         }

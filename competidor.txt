@@ -1,4 +1,4 @@
-Maxwell Simões Mineo;043.703.899-03;nacmineo@gmail.com;(42) 9996935648;Armis;33;79.00;Roxa;true;masculino;true; São Paulo;SP
+Maxwell Simões Mineo;043.703.899-03;nacmineo@gmail.com;(42) 9996935648;Armis;33;79.00;Roxa;true;masculino;true;São Paulo;SP
 Lionel Messi;078.503.899-03;messi@gmail.com;(42) 9996915986;Maggo;29;84.00;Azul;false;masculino;true; Rio de Janeiro;RJ
 Miguel Silva;123.456.789‑01;miguel.silva@jiuacademy.com;(41) 91234‑0001;Gracie Power;25;80.2;Branca;true; masculino;false; Belo Horizonte;MG
 Gael Santos;234.567.890‑12;gael.santos@jiuacademy.com;(11) 98765‑1234;Elite Jiu‑Jitsu;22;75.0;Azul;false;masculino;true; Salvador;BA

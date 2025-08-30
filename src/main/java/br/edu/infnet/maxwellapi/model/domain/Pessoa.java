@@ -18,8 +18,8 @@ public abstract class Pessoa {
     @Size(min = 3, max = 50, message = "O NOME TEM QUE TER DE 3 A 50 CARACTERES!")
     private String nome;
 
-    //@NotBlank
-    //@Pattern(regexp = "^\\d{3}\\.\\d{3}\\.\\d{3} -\\d{2}$")
+    @NotBlank
+    //@Pattern(regexp = "\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}", message = "CPF inválido. Use o formato XXX.XXX.XXX-XX.")
     private String cpf;
 
     @NotBlank(message = "email é obrigatório")

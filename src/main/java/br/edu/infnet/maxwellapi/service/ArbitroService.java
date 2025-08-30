@@ -6,6 +6,7 @@ import br.edu.infnet.maxwellapi.model.domain.exceptions.ArbitroInvalidoException
 import br.edu.infnet.maxwellapi.model.domain.exceptions.ArbitroNaoEncontradoException;
 
 import br.edu.infnet.maxwellapi.model.repository.ArbitroRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 
@@ -21,6 +22,7 @@ public class ArbitroService implements CrudService <Arbitro, Integer> {
     public ArbitroService(ArbitroRepository arbitroRepository) {
         this.arbitroRepository = arbitroRepository;
     }
+
 
     private void validar(Arbitro arbitro){
         if(arbitro == null){
@@ -44,6 +46,7 @@ public class ArbitroService implements CrudService <Arbitro, Integer> {
     }
 
     @Override
+    @Transactional
     public Arbitro alterar(Integer id, Arbitro arbitro) {
 
         if(id == null || id == 0){
@@ -70,13 +73,14 @@ public class ArbitroService implements CrudService <Arbitro, Integer> {
     }
 
     @Override
+    @Transactional
     public void excluir(Integer id) {
 
         obterPorId(id);
 
         arbitroRepository.delete(obterPorId(id));
     }
-
+    @Transactional
     public Arbitro inativar(Integer id){
         if(id == null || id == 0){
             throw new IllegalArgumentException("ID para alteracao nao pode ser nulo/zero");
