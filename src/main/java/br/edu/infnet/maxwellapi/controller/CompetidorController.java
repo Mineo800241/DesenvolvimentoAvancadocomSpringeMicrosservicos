@@ -1,6 +1,7 @@
 package br.edu.infnet.maxwellapi.controller;
 
 import br.edu.infnet.maxwellapi.model.domain.Competidor;
+import br.edu.infnet.maxwellapi.model.domain.exceptions.CompetidorInvalidoException;
 import br.edu.infnet.maxwellapi.service.CompetidorService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,10 +22,14 @@ public class CompetidorController {
 
     @PostMapping
     public ResponseEntity <Competidor> incluir(@RequestBody Competidor competidor) {
-
-        Competidor novocompetidor = competidorService.incluir(competidor);
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(novocompetidor);
+        try {
+            Competidor novocompetidor = competidorService.incluir(competidor);
+            return ResponseEntity.status(HttpStatus.CREATED).body(novocompetidor);
+        } catch (CompetidorInvalidoException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(competidor);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(competidor);
+        }
     }
 
     @PutMapping(value="/{id}")
