@@ -1,16 +1,22 @@
 package br.edu.infnet.maxwellapi.model.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+
+
 
 @Entity
 
 public class Arbitro extends Pessoa {
+
 
     private boolean contrato;
 
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "endereco_id")
+    @Valid
     private Endereco endereco;
 
     @Override

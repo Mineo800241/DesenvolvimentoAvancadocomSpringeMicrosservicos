@@ -10,8 +10,7 @@ import org.springframework.stereotype.Service;
 
 
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+
 
 
 @Service
@@ -22,8 +21,6 @@ public class ArbitroService implements CrudService <Arbitro, Integer> {
     public ArbitroService(ArbitroRepository arbitroRepository) {
         this.arbitroRepository = arbitroRepository;
     }
-
-    private final Map<Integer, Arbitro> mapa = new ConcurrentHashMap<Integer, Arbitro>();
 
     private void validar(Arbitro arbitro){
         if(arbitro == null){
@@ -59,9 +56,7 @@ public class ArbitroService implements CrudService <Arbitro, Integer> {
 
         arbitro.setId(id);
 
-        mapa.put(arbitro.getId(), arbitro);
-
-        return arbitro;
+        return arbitroRepository.save(arbitro);
     }
 
     @Override

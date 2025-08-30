@@ -2,6 +2,7 @@ package br.edu.infnet.maxwellapi;
 
 import br.edu.infnet.maxwellapi.model.domain.Competidor;
 import br.edu.infnet.maxwellapi.model.domain.Endereco;
+import br.edu.infnet.maxwellapi.model.domain.exceptions.CompetidorInvalidoException;
 import br.edu.infnet.maxwellapi.service.CompetidorService;
 
 import org.springframework.boot.ApplicationArguments;
@@ -53,7 +54,11 @@ public class CompetidorLoader implements ApplicationRunner {
             competidor.setAtivo(Boolean.valueOf(campos[10]));
             competidor.setEndereco(endereco);
 
-            competidorService.incluir(competidor);
+            try {
+                competidorService.incluir(competidor);
+            } catch (CompetidorInvalidoException e) {
+                System.err.println("Problema na inclusao do competidor: " + e.getMessage());
+            }
 
             linha = leitura.readLine();
         }

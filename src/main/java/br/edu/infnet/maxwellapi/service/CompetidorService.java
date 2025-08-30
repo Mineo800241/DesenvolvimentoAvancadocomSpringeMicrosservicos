@@ -9,9 +9,9 @@ import br.edu.infnet.maxwellapi.model.repository.CompetidorRepository;
 import org.springframework.stereotype.Service;
 
 
-import java.util.concurrent.ConcurrentHashMap;
+
 import java.util.List;
-import java.util.Map;
+
 
 
 
@@ -24,7 +24,6 @@ public class CompetidorService implements CrudService <Competidor, Integer>{
         this.competidorRepository = competidorRepository;
     }
 
-    private final Map<Integer, Competidor> mapa = new ConcurrentHashMap<Integer,Competidor>();
 
     private void validar(Competidor competidor){
         if(competidor == null){
@@ -61,9 +60,7 @@ public class CompetidorService implements CrudService <Competidor, Integer>{
 
         competidor.setId(id);
 
-        mapa.put(competidor.getId(), competidor);
-
-        return competidor;
+        return competidorRepository.save(competidor);
 
     }
 
@@ -71,7 +68,7 @@ public class CompetidorService implements CrudService <Competidor, Integer>{
     public Competidor obterPorId(Integer id) {
 
         if(id == null || id <= 0){
-            throw new IllegalArgumentException("ID para alteracao nao pode ser nulo/zero");
+            throw new IllegalArgumentException("ID para exclusao nao pode ser nulo/zero");
         }
 
         return competidorRepository.findById(id).orElseThrow(() -> new CompetidorNaoEncontradoException("Competidor com ID " + id + " nao existe."));
