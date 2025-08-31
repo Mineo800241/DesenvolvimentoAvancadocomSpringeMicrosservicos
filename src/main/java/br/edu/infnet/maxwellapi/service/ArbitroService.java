@@ -34,6 +34,7 @@ public class ArbitroService implements CrudService <Arbitro, Integer> {
     }
 
     @Override
+    @Transactional
     public Arbitro incluir(Arbitro arbitro) {
 
         validar(arbitro);
@@ -92,7 +93,7 @@ public class ArbitroService implements CrudService <Arbitro, Integer> {
             return arbitro;
         }
         arbitro.setContrato(false);
-        return null;
+        return arbitroRepository.save(arbitro);
     }
 
     @Override

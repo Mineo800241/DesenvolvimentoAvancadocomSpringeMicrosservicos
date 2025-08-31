@@ -7,6 +7,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
+import org.hibernate.validator.constraints.br.CPF;
 
 @MappedSuperclass
 public abstract class Pessoa {
@@ -19,11 +20,11 @@ public abstract class Pessoa {
     private String nome;
 
     @NotBlank
-    //@Pattern(regexp = "\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}", message = "CPF inválido. Use o formato XXX.XXX.XXX-XX.")
+    //@Pattern(regexp = "\\d{3}.\\d{3}.\\d{3}-\\d{2}", message = "CPF inválido. Use o formato XXX.XXX.XXX-XX.")
     private String cpf;
 
     @NotBlank(message = "email é obrigatório")
-//    @Email(message = "email invalido")
+//    @Email(message = "email invalido"
     private String email;
 
     @NotBlank(message = "telefone é obrigatório")

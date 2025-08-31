@@ -6,6 +6,7 @@ import br.edu.infnet.maxwellapi.model.domain.exceptions.CompetidorInvalidoExcept
 import br.edu.infnet.maxwellapi.model.domain.exceptions.CompetidorNaoEncontradoException;
 
 import br.edu.infnet.maxwellapi.model.repository.CompetidorRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 
@@ -35,6 +36,7 @@ public class CompetidorService implements CrudService <Competidor, Integer>{
     }
 
     @Override
+    @Transactional
     public Competidor incluir(Competidor competidor){
 
         validar(competidor);
@@ -47,6 +49,7 @@ public class CompetidorService implements CrudService <Competidor, Integer>{
     }
 
     @Override
+    @Transactional
     public Competidor alterar(Integer id, Competidor competidor){
 
         if(id == null || id == 0){
@@ -75,6 +78,7 @@ public class CompetidorService implements CrudService <Competidor, Integer>{
     }
 
     @Override
+    @Transactional
     public void excluir(Integer id) {
 
         obterPorId(id);
@@ -82,6 +86,7 @@ public class CompetidorService implements CrudService <Competidor, Integer>{
         competidorRepository.deleteById(id);
     }
 
+    @Transactional
     public Competidor inativar(Integer id){
         if(id == null || id == 0){
             throw new IllegalArgumentException("ID para alteracao nao pode ser nulo/zero");
@@ -93,7 +98,7 @@ public class CompetidorService implements CrudService <Competidor, Integer>{
             return competidor;
         }
         competidor.setAtivo(false);
-        return null;
+        return competidorRepository.save(competidor);
     }
 
     @Override

@@ -1,6 +1,6 @@
-Estevao Santos; 059.263.258-96; estevaosantos@gmail.com; 43996256389; true; Sao Paulo; SP;teste;teste1
-Jose Manoel; 045.963.258-45; manoel@gmail.com; 45999632114; true; Sao Paulo; SP;teste;teste1
-Roberto Alves; 042.953.789-25; roalves@gmail.com; 45966232523; false; Fortaleza; CE;teste;teste1
+Estevao Santos;059.263.258-96;estevaosantos@gmail.com;(43) 99625-6389; true; Sao Paulo; SP;teste;teste1
+Jose Manoel;045.963.258-45;manoel@gmail.com;(45) 99963-2114; true; Sao Paulo; SP;teste;teste1
+Roberto Alves;042.953.789-25;roalves@gmail.com;(45) 96623-2523; false; Fortaleza; CE;teste;teste1
 Ana Costa;123.456.789-00;ana.costa@example.com;(11) 91234-5678;true; Fortaleza; CE;teste;teste1
 Bruno Almeida;987.654.321-11;bruno.almeida@example.com;(21) 99876-5432;false; Maringa; PR;teste;teste1
 Carla Souza;111.222.333-44;carla.souza@example.com;(41) 99988-7766;true; Maceio; PE;teste;teste1

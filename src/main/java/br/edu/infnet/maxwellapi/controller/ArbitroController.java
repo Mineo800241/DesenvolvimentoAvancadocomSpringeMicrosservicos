@@ -23,14 +23,8 @@ public class ArbitroController {
 
     @PostMapping
     public ResponseEntity<Arbitro> incluir(@RequestBody Arbitro arbitro) {
-        try {
             Arbitro novoarbitro = arbitroService.incluir(arbitro);
             return ResponseEntity.status(HttpStatus.CREATED).body(novoarbitro);
-        } catch (CompetidorInvalidoException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(arbitro);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(arbitro);
-        }
     }
 
     @PutMapping(value="/{id}")

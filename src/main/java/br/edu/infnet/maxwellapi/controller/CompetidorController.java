@@ -22,15 +22,9 @@ public class CompetidorController {
 
     @PostMapping
     public ResponseEntity <Competidor> incluir(@RequestBody Competidor competidor) {
-        try {
             Competidor novocompetidor = competidorService.incluir(competidor);
             return ResponseEntity.status(HttpStatus.CREATED).body(novocompetidor);
-        } catch (CompetidorInvalidoException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(competidor);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(competidor);
-        }
-    }
+                }
 
     @PutMapping(value="/{id}")
     public Competidor alterar(@PathVariable Integer id, @RequestBody Competidor competidor) {
