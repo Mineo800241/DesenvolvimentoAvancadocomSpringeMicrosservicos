@@ -14,7 +14,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.List;
 
-
+@Order(1)
 @Component
 public class CompetidorLoader implements ApplicationRunner {
 

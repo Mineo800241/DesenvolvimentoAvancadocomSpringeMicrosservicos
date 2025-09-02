@@ -7,6 +7,7 @@ import br.edu.infnet.maxwellapi.model.domain.exceptions.CompetidorNaoEncontradoE
 
 import br.edu.infnet.maxwellapi.model.repository.CompetidorRepository;
 import jakarta.transaction.Transactional;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
 
@@ -17,7 +18,7 @@ import java.util.List;
 
 
 @Service
-public class CompetidorService implements CrudService <Competidor, Integer>{
+public class CompetidorService implements CrudService <Competidor, Integer> {
 
     private final CompetidorRepository competidorRepository;
 
@@ -26,22 +27,22 @@ public class CompetidorService implements CrudService <Competidor, Integer>{
     }
 
 
-    private void validar(Competidor competidor){
-        if(competidor == null){
+    private void validar(Competidor competidor) {
+        if (competidor == null) {
             throw new IllegalArgumentException("Competidor sem ID (invalido)");
         }
-        if(competidor.getNome() == null || competidor.getNome().trim().isEmpty()){
+        if (competidor.getNome() == null || competidor.getNome().trim().isEmpty()) {
             throw new CompetidorInvalidoException("Nome do competidor é obrigatorio!");
         }
     }
 
     @Override
     @Transactional
-    public Competidor incluir(Competidor competidor){
+    public Competidor incluir(Competidor competidor) {
 
         validar(competidor);
 
-        if(competidor.getId() != null && competidor.getId() != 0){
+        if (competidor.getId() != null && competidor.getId() != 0) {
             throw new IllegalArgumentException("NOVO Competidor NÃO PODE TER ID NA INCLUSAO");
         }
 
@@ -50,9 +51,9 @@ public class CompetidorService implements CrudService <Competidor, Integer>{
 
     @Override
     @Transactional
-    public Competidor alterar(Integer id, Competidor competidor){
+    public Competidor alterar(Integer id, Competidor competidor) {
 
-        if(id == null || id == 0){
+        if (id == null || id == 0) {
             throw new IllegalArgumentException("ID para alteracao nao pode ser nulo/zero");
         }
 
@@ -70,8 +71,8 @@ public class CompetidorService implements CrudService <Competidor, Integer>{
     @Override
     public Competidor obterPorId(Integer id) {
 
-        if(id == null || id <= 0){
-            throw new IllegalArgumentException("ID para exclusao nao pode ser nulo/zero");
+        if (id == null || id <= 0) {
+            throw new IllegalArgumentException("ID para busca nao pode ser nulo/zero");
         }
 
         return competidorRepository.findById(id).orElseThrow(() -> new CompetidorNaoEncontradoException("Competidor com ID " + id + " nao existe."));
@@ -87,13 +88,13 @@ public class CompetidorService implements CrudService <Competidor, Integer>{
     }
 
     @Transactional
-    public Competidor inativar(Integer id){
-        if(id == null || id == 0){
+    public Competidor inativar(Integer id) {
+        if (id == null || id == 0) {
             throw new IllegalArgumentException("ID para alteracao nao pode ser nulo/zero");
         }
         Competidor competidor = obterPorId(id);
 
-        if(!competidor.isAtivo()){
+        if (!competidor.isAtivo()) {
             System.out.println("Competidor" + competidor.getNome() + "já está inativo");
             return competidor;
         }
@@ -107,6 +108,7 @@ public class CompetidorService implements CrudService <Competidor, Integer>{
         return competidorRepository.findAll();
     }
 
+    public Competidor obterporCpf(String cpf) {
+       return competidorRepository.findByCpf(cpf).orElseThrow(() -> new CompetidorNaoEncontradoException("Competidor com ID " + cpf + " nao existe."));
     }
-
-
+}

@@ -87,7 +87,7 @@ public class GlobalExceptionHandler {
         errors.put("Erro",HttpStatus.INTERNAL_SERVER_ERROR.toString());
         errors.put("Erro valido",ex.getMessage());
 
-        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(errors, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 

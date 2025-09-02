@@ -11,8 +11,11 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.validation.annotation.Validated;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
-@Table
 public class Competidor extends Pessoa {
 
 
@@ -26,13 +29,10 @@ public class Competidor extends Pessoa {
     @Min(value = 0)
     private double peso;
 
-    @NotBlank
     private String faixa;
-
 
     private boolean pagamento;
 
-    @NotBlank
     private String genero;
 
     private boolean ativo;
@@ -41,6 +41,10 @@ public class Competidor extends Pessoa {
     @JoinColumn(name = "endereco_id")
     @Valid
     private Endereco endereco;
+
+    @OneToMany(mappedBy = "competidor", cascade = CascadeType.ALL, orphanRemoval = true,fetch =  FetchType.LAZY)
+    private List<Modalidade> modalidade = new ArrayList<Modalidade>();
+
 
     @Override
     public String obterPessoa() {
@@ -115,6 +119,14 @@ public class Competidor extends Pessoa {
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
+    }
+
+    public List<Modalidade> getModalidade() {
+        return modalidade;
+    }
+
+    public void setModalidade(List<Modalidade> modalidade) {
+        this.modalidade = modalidade;
     }
 }
 

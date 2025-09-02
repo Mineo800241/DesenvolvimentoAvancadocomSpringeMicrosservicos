@@ -7,13 +7,14 @@ import br.edu.infnet.maxwellapi.model.domain.exceptions.ArbitroNaoEncontradoExce
 
 import br.edu.infnet.maxwellapi.model.repository.ArbitroRepository;
 import jakarta.transaction.Transactional;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
 
 import java.util.List;
 
 
-
+@Order(2)
 @Service
 public class ArbitroService implements CrudService <Arbitro, Integer> {
 
