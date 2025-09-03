@@ -8,9 +8,10 @@ import java.util.List;
 
 @Repository
 public interface ModalidadeRepository extends JpaRepository<Modalidade, Integer> {
-//    @Override
-//    List<Modalidade> findAll();
-//    List<Modalidade> findByNomeContaining(String faixa);
 
-
+List<Modalidade> findAll();
+List<Modalidade> findByFaixaJiujitsu(String faixaJiujitsu);
+List<Modalidade>findByGeneroModalidade(String generoModalidade);
+List<Modalidade>findByCategoriaPorIdade(String categoriaPorIdade);
+List<Modalidade> findByPesoModalidade(String pesoModalidade);
 }

@@ -41,17 +41,8 @@ public class ModalidadeLoader implements ApplicationRunner {
         while(linha != null) {
             campos = linha.split(";");
 
-//            Modalidade modalidade = new Modalidade();
-//            modalidade.setCodigoluta(campos[0]);
-//            modalidade.setModalidadeluta(campos[1]);
-//            modalidade.setGenero(campos[2]);
-//            modalidade.setCategoriaPorIdade(campos[3]);
-//            modalidade.setFaixaJiujitsu(campos[4]);
-//            modalidade.setPeso(campos[5]);
-//            modalidade.setPesoOuabsolutoOuambos(campos[6]);
-
             String Codigoluta = campos[0];
-            String Modalidadeluta = campos[1];
+            String ModalidadeDeluta = campos[1];
             String GeneroModalidade = campos[2];
             String CategoriaPorIdade = campos[3];
             String FaixaJiujitsu = campos[4];
@@ -64,7 +55,7 @@ public class ModalidadeLoader implements ApplicationRunner {
             try{
                 responsavel = competidorService.obterporCpf(cpfCompetidor);
                 if (responsavel == null) {
-                    System.err.println("[CPF] competidor com cpf " + cpfCompetidor + "Não encontrado na lista" + Modalidadeluta);
+                    System.err.println("[CPF] competidor com cpf " + cpfCompetidor + "Não encontrado na lista" + ModalidadeDeluta);
                     linha = leitura.readLine();
                     continue;
                 }
@@ -76,7 +67,7 @@ public class ModalidadeLoader implements ApplicationRunner {
 
             Modalidade modalidade = new Modalidade();
             modalidade.setCodigoluta(Codigoluta);
-            modalidade.setModalidadeluta(Modalidadeluta);
+            modalidade.setModalidadeluta(ModalidadeDeluta);
             modalidade.setGeneroModalidade(GeneroModalidade);
             modalidade.setCategoriaPorIdade(CategoriaPorIdade);
             modalidade.setFaixaJiujitsu(FaixaJiujitsu);

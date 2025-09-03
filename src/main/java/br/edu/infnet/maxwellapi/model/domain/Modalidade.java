@@ -2,6 +2,7 @@ package br.edu.infnet.maxwellapi.model.domain;
 
 import jakarta.persistence.*;
 
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 
@@ -14,25 +15,25 @@ public class Modalidade {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotNull
+    @NotBlank
     private String codigoluta;
 
-
+    @NotBlank
     private String modalidadeluta;
 
-
+    @NotBlank
     private String generoModalidade;
-//arrumar aqui depois
 
+    @NotBlank
     private String categoriaPorIdade;
 
-
+    @NotBlank
     private String faixaJiujitsu;
 
-
+    @NotBlank
     private String pesoModalidade;
 
-
+    @NotBlank
     private String pesoOuabsolutoOuambos;
 
 
